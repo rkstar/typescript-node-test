@@ -43,8 +43,7 @@ module.exports = {
       include: [
         dir.src,
         dir.utils
-      ],
-      exclude: /node_modules/
+      ]
     // },{
     //   test: /\.css$/,
     //   loaders: ['style-loader','css-loader','postcss-loader'],

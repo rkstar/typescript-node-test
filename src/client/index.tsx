@@ -1,7 +1,9 @@
 import * as React from 'react'
 import {render} from 'react-dom'
 
-class App extends React.Component{
+interface AppProps {}
+
+class App extends React.Component<AppProps, undefined>{
   render(){
     return (
       <h1>it's alive!</h1>
