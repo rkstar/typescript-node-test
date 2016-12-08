@@ -57,7 +57,7 @@
 /******/
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "507cebc960b537f4a1fb"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "130587a464c454d492b3"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotMainModule = true; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -18632,7 +18632,7 @@ xhr = null // Help gc
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
-"use strict";
+'use strict';
 var express = __webpack_require__(146);
 var app = express();
 app.get('/*', function (req, res) {

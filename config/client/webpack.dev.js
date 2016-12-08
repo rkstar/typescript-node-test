@@ -14,7 +14,7 @@ module.exports = {
     dir.src
   ],
   resolve: {
-    modules: ['node_modules', 'src/client'],
+    modules: ['node_modules'],
     extensions: ['.css', '.js', '.jsx', '.ts', '.tsx', '.json', '.html'],
     enforceExtension: false
   },

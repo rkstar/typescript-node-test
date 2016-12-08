@@ -13,7 +13,7 @@ module.exports = {
     dir.src
   ],
   resolve: {
-    modules: ['node_modules', 'src/server'],
+    modules: ['node_modules'],
     extensions: ['.js', '.ts', '.json', '.html'],
     enforceExtension: false
   },
