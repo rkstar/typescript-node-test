@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "es3",
+    "module": "commonjs",
+    "jsx": "react",
+    "noImplicitAny": false,
+    "removeComments": true,
+    "sourceMap": true,
+    "allowJs": true
+  },
+  "include": [
+    "../../src/client/**/*"
+  ],
+  "exclude": [
+    "../../node_modules"
+  ]
+}
