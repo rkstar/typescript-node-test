@@ -35,10 +35,10 @@ module.exports = {
         dir.utils
       ],
       exclude: /node_modules/
-    },{
-      test: /\.json$/,
-      loaders: ['json-loader'],
-      exclude: /node_modules/
+    // },{
+    //   test: /\.json$/,
+    //   loaders: ['json-loader'],
+    //   exclude: /node_modules/
     }]
   }
 }

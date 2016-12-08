@@ -1,6 +1,6 @@
 var webpack = require('webpack')
 var path = require('path')
-var cssnext = require('postcss-cssnext')
+// var cssnext = require('postcss-cssnext')
 var root = path.resolve(path.join(__dirname, '../../'))
 var dir = {
   utils: root+'/src/classes',
@@ -26,15 +26,15 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.LoaderOptionsPlugin({
-      options: {
-        postcss: function(){
-          return [
-            cssnext({browsers: ['> 1%', 'last 4 versions']})
-          ]
-        }
-      }
-    })
+    // new webpack.LoaderOptionsPlugin({
+    //   options: {
+    //     postcss: function(){
+    //       return [
+    //         cssnext({browsers: ['> 1%', 'last 4 versions']})
+    //       ]
+    //     }
+    //   }
+    // })
   ],
   module: {
     loaders: [{
@@ -45,14 +45,14 @@ module.exports = {
         dir.utils
       ],
       exclude: /node_modules/
-    },{
-      test: /\.css$/,
-      loaders: ['style-loader','css-loader','postcss-loader'],
-      exclude: /node_modules/
-		},{
-      test: /\.json$/,
-      loaders: ['json-loader'],
-      exclude: /node_modules/
+    // },{
+    //   test: /\.css$/,
+    //   loaders: ['style-loader','css-loader','postcss-loader'],
+    //   exclude: /node_modules/
+		// },{
+    //   test: /\.json$/,
+    //   loaders: ['json-loader'],
+    //   exclude: /node_modules/
     }]
   }
 }
