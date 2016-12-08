@@ -14,7 +14,7 @@ module.exports = {
   ],
   resolve: {
     modules: ['node_modules'],
-    extensions: ['.js', '.ts', '.json', '.html'],
+    extensions: ['.ts', '.json', '.html'],
     enforceExtension: false
   },
   output: {
@@ -28,7 +28,7 @@ module.exports = {
   ],
   module: {
     loaders: [{
-      test: /\.t?j?s$/,
+      test: /\.ts$/,
       loaders: ['awesome-typescript-loader?configFileName=config/server/tsconfig.json'],
       include: [
         dir.src,
