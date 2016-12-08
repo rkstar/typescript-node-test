@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es3",
+    "target": "es5",
     "module": "commonjs",
     "jsx": "react",
     "noImplicitAny": false,
@@ -12,6 +12,6 @@
     "../../src/client/**/*"
   ],
   "exclude": [
-    "../../node_modules"
+    "../../node_modules/**/*"
   ]
 }

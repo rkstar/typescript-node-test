@@ -13,8 +13,8 @@ module.exports = {
     dir.src
   ],
   resolve: {
-    modules: ['node_modules', 'src'],
-    extensions: ['.css', '.ts', '.json', '.html'],
+    modules: ['node_modules', 'src/server'],
+    extensions: ['.js', '.ts', '.json', '.html'],
     enforceExtension: false
   },
   output: {
@@ -28,17 +28,21 @@ module.exports = {
   ],
   module: {
     loaders: [{
-      test: /\.tsx?$/,
+      test: /\.t?j?s$/,
       loaders: ['awesome-typescript-loader?configFileName=config/server/tsconfig.json'],
       include: [
         dir.src,
         dir.utils
       ],
       exclude: /node_modules/
-    // },{
-    //   test: /\.json$/,
-    //   loaders: ['json-loader'],
-    //   exclude: /node_modules/
+    },{
+      test: /\.json$/,
+      loaders: ['file-loader', 'json-loader'],
+      exclude: /node_modules/
+    }, {
+      test: /\.html$/,
+      loaders: ['file-loader', 'html-loader', 'url-loader'],
+      exclude: /node_modules/
     }]
   }
 }
