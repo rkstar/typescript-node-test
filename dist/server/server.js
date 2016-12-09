@@ -19,7 +19,7 @@
 /******/
 /******/
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "e759661b97d418ff3a96"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "7e657f1efea0b03de807"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotMainModule = true; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -664,7 +664,7 @@
 /******/ 	__webpack_require__.h = function() { return hotCurrentHash; };
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return hotCreateRequire(2)(__webpack_require__.s = 2);
+/******/ 	return hotCreateRequire(4)(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -673,13 +673,24 @@
 
 "use strict";
 "use strict";
-var express = __webpack_require__(1);
+var express = __webpack_require__(2);
+var compression = __webpack_require__(1);
+var path = __webpack_require__(3);
+var clientDir = path.resolve("./dist/client");
+var host = 'localhost';
+var port = 3000;
 var app = express();
-app.get('/*', function (req, res) {
-    res.send('hello typescript server!');
+app.enable("trust proxy");
+app.use(compression());
+app.use(express.static(clientDir));
+app.get('*', function (req, res) {
+    res.status(200).sendFile(clientDir + "/index.html");
 });
-app.listen(3000, function () {
-    console.log("running on http://localhost:3000");
+app.listen(port, function (err) {
+    if (err) {
+        return console.log(err);
+    }
+    console.log("listening at http://" + host + ":" + port);
 });
 
 
@@ -687,10 +698,22 @@ app.listen(3000, function () {
 /* 1 */
 /***/ function(module, exports) {
 
-module.exports = require("express");
+module.exports = require("compression");
 
 /***/ },
 /* 2 */
+/***/ function(module, exports) {
+
+module.exports = require("express");
+
+/***/ },
+/* 3 */
+/***/ function(module, exports) {
+
+module.exports = require("path");
+
+/***/ },
+/* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(0);
