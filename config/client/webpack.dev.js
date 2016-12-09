@@ -14,8 +14,8 @@ module.exports = {
     dir.src
   ],
   resolve: {
-    modules: ['node_modules'],
-    extensions: ['.css', '.ts', '.tsx', '.json', '.html'],
+    modules: ['node_modules', dir.src],
+    extensions: ['.css', '.webpack.js', '.web.js', '.js', '.jsx', '.ts', '.tsx', '.json', '.html'],
     enforceExtension: false
   },
   output: {
@@ -37,25 +37,26 @@ module.exports = {
     })
   ],
   module: {
-    loaders: [{
-      test: /\.tsx?$/,
-      loaders: ['awesome-typescript-loader?configFileName=config/client/tsconfig.json'],
-      include: [
-        dir.src,
-        dir.utils
-      ],
+    rules: [{
+      test: /\.json$/,
+      loaders: ['json-loader'],
       exclude: /node_modules/
     },{
       test: /\.css$/,
       loaders: ['style-loader','css-loader','postcss-loader'],
       exclude: /node_modules/
 		},{
-      test: /\.json$/,
-      loaders: ['json-loader'],
-      exclude: /node_modules/
-    }, {
       test: /\.html$/,
       loaders: ['file-loader', 'html-loader', 'url-loader'],
+      exclude: /node_modules/
+    },{
+      enforce: 'pre',
+      test: /\.js$/,
+      loader: 'source-map-loader',
+      exclude: /node_modules/
+    },{
+      test: /\.tsx?$/,
+      loaders: ['awesome-typescript-loader?configFileName=config/client/tsconfig.json'],
       exclude: /node_modules/
     }]
   }

@@ -8,13 +8,14 @@ var dir = {
 }
 
 module.exports = {
+  target: 'node',
   devtool: 'source-map',
   entry: [
     dir.src
   ],
   resolve: {
-    modules: ['node_modules'],
-    extensions: ['.ts', '.json', '.html'],
+    modules: ['node_modules', dir.src],
+    extensions: ['.webpack.js', 'web.js', '.js', '.ts', '.json', '.html'],
     enforceExtension: false
   },
   output: {
@@ -27,21 +28,22 @@ module.exports = {
     new webpack.optimize.OccurrenceOrderPlugin()
   ],
   module: {
-    loaders: [{
-      test: /\.ts$/,
-      loaders: ['awesome-typescript-loader?configFileName=config/server/tsconfig.json'],
-      include: [
-        dir.src,
-        dir.utils
-      ],
+    rules: [{
+      enforce: 'pre',
+      test: /\.js$/,
+      loader: 'source-map-loader',
       exclude: /node_modules/
     },{
       test: /\.json$/,
       loaders: ['file-loader', 'json-loader'],
       exclude: /node_modules/
-    }, {
+    },{
       test: /\.html$/,
       loaders: ['file-loader', 'html-loader', 'url-loader'],
+      exclude: /node_modules/
+    },{
+      test: /\.ts$/,
+      loader: 'awesome-typescript-loader?configFileName=config/server/tsconfig.json',
       exclude: /node_modules/
     }]
   }
