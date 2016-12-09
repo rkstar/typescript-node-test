@@ -1,5 +1,6 @@
 var webpack = require('webpack')
 var path = require('path')
+var nodeExternals = require('webpack-node-externals')
 var root = path.resolve(path.join(__dirname, '../../'))
 var dir = {
   utils: root+'/src/classes',
@@ -10,6 +11,7 @@ var dir = {
 module.exports = {
   target: 'node',
   devtool: 'source-map',
+  externals: [nodeExternals()],
   entry: [
     dir.src
   ],
@@ -31,7 +33,11 @@ module.exports = {
     rules: [{
       enforce: 'pre',
       test: /\.js$/,
-      loader: 'source-map-loader',
+      loaders: ['source-map-loader'],
+      exclude: /node_modules/
+    },{
+      test: /\.ts$/,
+      loaders: ['awesome-typescript-loader?configFileName=config/server/tsconfig.json'],
       exclude: /node_modules/
     },{
       test: /\.json$/,
@@ -40,10 +46,6 @@ module.exports = {
     },{
       test: /\.html$/,
       loaders: ['file-loader', 'html-loader', 'url-loader'],
-      exclude: /node_modules/
-    },{
-      test: /\.ts$/,
-      loader: 'awesome-typescript-loader?configFileName=config/server/tsconfig.json',
       exclude: /node_modules/
     }]
   }

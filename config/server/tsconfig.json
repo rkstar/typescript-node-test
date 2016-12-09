@@ -8,8 +8,7 @@
     "noResolve": true,
     "noImplicitAny": false,
     "removeComments": true,
-    "sourceMap": true,
-    "allowJs": true
+    "sourceMap": true
   },
   "include": [
     "../../src/server/**/*"

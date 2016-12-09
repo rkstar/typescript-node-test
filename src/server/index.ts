@@ -1,8 +1,8 @@
-import express = require('express')
+import * as express from 'express'
 
 const app :express.Application = express()
 app.get('/*', (req, res)=>{
-  res.send('hello world!')
+  res.send('hello typescript server!')
 })
 
 app.listen(3000, ()=>{

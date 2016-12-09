@@ -1,0 +1,10 @@
+{
+  "presets": [
+    "latest"
+  ],
+  "plugins": [
+    "transform-async-to-generator",
+    "transform-runtime",
+    "transform-object-rest-spread"
+  ]
+}

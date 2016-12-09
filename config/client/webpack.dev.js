@@ -10,6 +10,7 @@ var dir = {
 
 module.exports = {
   devtool: 'source-map',
+  target: 'web',
   entry: [
     dir.src
   ],
@@ -38,6 +39,15 @@ module.exports = {
   ],
   module: {
     rules: [{
+      enforce: 'pre',
+      test: /\.js$/,
+      loaders: ['source-map-loader'],
+      exclude: /node_modules/
+    },{
+      test: /\.tsx?$/,
+      loaders: ['awesome-typescript-loader?configFileName=config/client/tsconfig.json'],
+      exclude: /node_modules/
+    },{
       test: /\.json$/,
       loaders: ['json-loader'],
       exclude: /node_modules/
@@ -48,15 +58,6 @@ module.exports = {
 		},{
       test: /\.html$/,
       loaders: ['file-loader', 'html-loader', 'url-loader'],
-      exclude: /node_modules/
-    },{
-      enforce: 'pre',
-      test: /\.js$/,
-      loader: 'source-map-loader',
-      exclude: /node_modules/
-    },{
-      test: /\.tsx?$/,
-      loaders: ['awesome-typescript-loader?configFileName=config/client/tsconfig.json'],
       exclude: /node_modules/
     }]
   }
