@@ -11,7 +11,15 @@ const app :express.Application = express()
 // we want to trust our proxy thru haproxy so that
 // we can get the client ip address in our resolvers
 app.enable(`trust proxy`)
-app.use(compression())
+
+// this allows us to return previously gzipped files!
+// ie. gzipped by webpack instead of express (performance!)
+app.get('*.js', (req, res, next)=>{
+  req.url = `${req.url}.gz`
+  res.set('Content-Encoding', 'gzip')
+  next()
+})
+
 // server static assets
 // NOTE: this path is relative to the dir that
 // the node process starting this app was executed from!

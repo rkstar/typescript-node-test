@@ -1,4 +1,5 @@
 var webpack = require('webpack')
+var CompressionPlugin = require('compression-webpack-plugin')
 var path = require('path')
 var cssnext = require('postcss-cssnext')
 var root = path.resolve(path.join(__dirname, '../../'))
@@ -26,7 +27,21 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
+    // bring down the file size in production!
+    // https://medium.com/@rajaraodv/two-quick-ways-to-reduce-react-apps-size-in-production-82226605771a#.ojksydfiu
+    new webpack.DefinePlugin({
+      'process.env': {'NODE_ENV': JSON.stringify('development')}
+    }),
+    new webpack.optimize.UglifyJsPlugin(),
+    new webpack.optimize.AggressiveMergingPlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
+    new CompressionPlugin({
+      asset: '[path].gz[query]',
+      algorithm: 'gzip',
+      test: /\.js$|\.css$|\.html$/,
+      threshold: 10240,
+      minRatio: 0.8
+    }),
     new webpack.LoaderOptionsPlugin({
       options: {
         postcss: function(){
