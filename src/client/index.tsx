@@ -1,14 +1,11 @@
 import * as React from 'react'
 import {render} from 'react-dom'
+import App from './app'
 
-interface AppProps {}
-
-class App extends React.Component<AppProps, undefined>{
+class Router extends React.Component<null, {}>{
   render(){
-    return (
-      <h1>it's alive!</h1>
-    )
+    return <App />
   }
 }
 
-render(<App />, document.getElementById('root'))
+render(<Router />, document.getElementById('root'))

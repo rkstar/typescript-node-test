@@ -1,5 +1,6 @@
+import * as path from 'path'
 import * as webpack from 'webpack'
-import * as config from '../../config/client/webpack.dev.js'
+const config = require('../../config/client/webpack.dev.js')
 import * as hotMiddleware from 'webpack-hot-middleware'
 import * as devMiddleware from 'webpack-dev-middleware'
 
@@ -9,9 +10,8 @@ export default function(app, environment){
     app.use(devMiddleware(compiler, {
       hot: true,
       publicPath: config.output.publicPath,
-      noInfo: true
+      // noInfo: true
     }))
     app.use(hotMiddleware(compiler))
-
   }
 }

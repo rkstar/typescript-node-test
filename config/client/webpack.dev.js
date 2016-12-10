@@ -2,11 +2,11 @@ var webpack = require('webpack')
 var CompressionPlugin = require('compression-webpack-plugin')
 var path = require('path')
 var cssnext = require('postcss-cssnext')
-var root = path.resolve(path.join(__dirname, '../../'))
+var root = path.resolve('.')
 var dir = {
-  utils: root+'/src/classes',
-  src: root+'/src/client',
-  build: root+'/dist/client'
+  utils: path.join(root, 'src', 'classes'),
+  src: path.join(root, 'src', 'client'),
+  build: path.join(root, 'dist', 'client')
 }
 
 module.exports = {

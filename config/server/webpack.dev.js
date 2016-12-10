@@ -3,9 +3,9 @@ var path = require('path')
 var nodeExternals = require('webpack-node-externals')
 var root = path.resolve(path.join(__dirname, '../../'))
 var dir = {
-  utils: root+'/src/classes',
-  src: root+'/src/server',
-  build: root+'/dist/server'
+  utils: path.join(root, 'src', 'classes'),
+  src: path.join(root, 'src', 'server'),
+  build: path.join(root, 'dist', 'server')
 }
 
 module.exports = {
