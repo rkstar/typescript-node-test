@@ -13,6 +13,7 @@ module.exports = {
   devtool: 'source-map',
   target: 'web',
   entry: [
+    'webpack-hot-middleware/client',
     dir.src
   ],
   resolve: {
@@ -26,6 +27,7 @@ module.exports = {
     publicPath: '/'
   },
   plugins: [
+    new webpack.NoErrorsPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     // bring down the file size in production!
     // https://medium.com/@rajaraodv/two-quick-ways-to-reduce-react-apps-size-in-production-82226605771a#.ojksydfiu
@@ -60,7 +62,7 @@ module.exports = {
       exclude: /node_modules/
     },{
       test: /\.tsx?$/,
-      loaders: ['awesome-typescript-loader?configFileName=config/client/tsconfig.json'],
+      loaders: ['react-hot-loader', 'awesome-typescript-loader?configFileName=config/client/tsconfig.json'],
       exclude: /node_modules/
     },{
       test: /\.json$/,
